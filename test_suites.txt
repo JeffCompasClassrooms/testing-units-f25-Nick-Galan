@@ -2,9 +2,11 @@ root@LAPTOP-V40JQ2PU:~/testing-units-f25-Nick-Galan# pytest
 =================================================== test session starts ====================================================
 platform linux -- Python 3.10.12, pytest-8.4.1, pluggy-1.6.0
 rootdir: /root/testing-units-f25-Nick-Galan
+plugins: describe-2.2.0, spec-5.0.0
 collected 37 items                                                                                                         
 
 circle_test.py .......                                                                                               [ 18%]
 test_population.py ..............................                                                                    [100%]
 
-==================================================== 37 passed in 0.17s ====================================================
+==================================================== 37 passed in 0.22s ====================================================
+root@LAPTOP-V40JQ2PU:~/testing-units-f25-Nick-Galan# 

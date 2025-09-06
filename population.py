@@ -1,26 +1,45 @@
 class CountryPopulation:
-    def __init__(self, country, population):
-        self.country = country
-        self.population = population
-        self.world_population = 8_000_000_000  
+    data_store = {
+        "China": (1_412_600_000, 3_705_407),
+        "India": (1_366_000_000, 1_269_346),
+        "USA": (331_000_000, 3_800_000),
+        "Indonesia": (273_000_000, 735_358),
+        "Brazil": (212_600_000, 3_287_956),
+        "Nigeria": (206_100_000, 356_669),
+        "Bangladesh": (166_300_000, 56_980),
+        "Russia": (144_400_000, 6_601_668),
+        "Mexico": (128_900_000, 761_606),
+        "Japan": (125_800_000, 145_937),
+    }
 
-    def calculate_population_percentage(self):
-     
+    world_population = 8_000_000_000
+
+    def __init__(self, country):
+        self.country = country
+        self.population, self.area = self.data_store[country]
+
+    def population_percentage(self):
         return (self.population / self.world_population) * 100
 
-    def display_population_percentage(self):
-    
-        percentage = self.calculate_population_percentage()
-       
-        return f"The population of {self.country} is {percentage:.2f}% of the world's population."
+    def population_density(self):
+        return self.population / self.area
 
 
-if __name__ == "__main__":
-    
-    country = input("Enter the name of the country: ")
-    population = int(input(f"Enter the population of {country}: "))
-
-    country_pop = CountryPopulation(country, population)
+def most_populous():
+    return max(CountryPopulation.data_store.items(),
+               key=lambda item: item[1][0])[0]
 
 
-    print(country_pop.display_population_percentage())
+def least_populous():
+    return min(CountryPopulation.data_store.items(),
+               key=lambda item: item[1][0])[0]
+
+
+def most_dense():
+    return max(CountryPopulation.data_store.items(),
+               key=lambda item: item[1][0] / item[1][1])[0]
+
+
+def least_dense():
+    return min(CountryPopulation.data_store.items(),
+               key=lambda item: item[1][0] / item[1][1])[0]
